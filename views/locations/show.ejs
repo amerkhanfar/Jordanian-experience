@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= location.title %></title>
+  </head>
+  <body>
+    <h1><%= location.title %></h1>
+    <h2><%= location.city %></h2>
+    <div>
+      <a href="/locations">Home</a>
+      <a href="/locations/<%=location._id%>/edit">Edit</a>
+      <form
+        action="/locations/<%= location._id %>?_method=DELETE"
+        method="POST"
+      >
+        <button>Delete</button>
+      </form>
+    </div>
+  </body>
+</html>
