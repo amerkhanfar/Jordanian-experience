@@ -19,7 +19,7 @@ const seedDb = async () => {
     const location = new Location({
       title: `${cities[i].title}`,
       city: `${cities[i].city}`,
-      image: 'https://source.unsplash.com/collection/483251',
+      image: `${cities[i].image}`,
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis rem, autem amet repellendus quibusdam porro odit omnis eum quo voluptatibus, suscipit distinctio laborum atque enim nulla impedit placeat quos vel!',
       price: `${cities[i].price}`,

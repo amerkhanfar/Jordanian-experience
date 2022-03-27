@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Locations</title>
-  </head>
-  <body>
-    <h1>All campgrounds</h1>
-    <a href="/locations/new">Add a Location</a>
-    <ul>
-      <% for (location of locations) {%>
-      <li><a href="/locations/<%= location._id%>"><%= location.title %></a></li>
+<% layout('layouts/boilerplate')%>
 
-      <%}%>
-    </ul>
-  </body>
-</html>
+<h1>All Locations</h1>
+<div>
+  <a href="/locations/new">Add Campground</a>
+</div>
+<% for (let location of locations){%>
+<div class="card" mb-3>
+  <div class="row">
+    <div class="col-md-4">
+      <img class="img-fluid" alt="" src="<%=location.image%>" />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= location.title %></h5>
+        <p class="card-text"><%= location.description %></p>
+        <p class="card-text">
+          <small class="text-muted"><%= location.city%></small>
+        </p>
+        <a class="btn btn-primary" href="/locations/<%=location._id%>"
+          >View <%=location.title%></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<% }%>
