@@ -5,8 +5,11 @@ const path = require('path');
 const Location = require('./models/locations');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
+const catchAsync = require('./utilities/catchAsync');
 
 const mongoose = require('mongoose');
+const req = require('express/lib/request');
+const ExpressError = require('./utilities/expressError');
 
 mongoose.connect('mongodb://localhost:27017/jordanian-experience', {
   useNewUrlParser: true,
@@ -30,42 +33,74 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-app.get('/locations', async (req, res) => {
-  const locations = await Location.find({});
-  res.render('locations/index', { locations });
-});
+app.get(
+  '/locations',
+  catchAsync(async (req, res) => {
+    const locations = await Location.find({});
+    res.render('locations/index', { locations });
+  })
+);
 app.get('/locations/new', (req, res) => {
   res.render('locations/new');
 });
 
-app.post('/locations', async (req, res) => {
-  const location = new Location(req.body);
-  await location.save();
-  res.redirect(`/locations/${location._id}`);
-});
+app.post(
+  '/locations',
+  catchAsync(async (req, res) => {
+    try {
+      const location = new Location(req.body);
+      await location.save();
+      res.redirect(`/locations/${location._id}`);
+    } catch (e) {
+      next(e);
+    }
+  })
+);
 
-app.get('/locations/:id', async (req, res) => {
-  const location = await Location.findById(req.params.id);
-  res.render('locations/show', { location });
-});
+app.get(
+  '/locations/:id',
+  catchAsync(async (req, res) => {
+    const location = await Location.findById(req.params.id);
+    res.render('locations/show', { location });
+  })
+);
 
-app.get('/locations/:id/edit', async (req, res) => {
-  const location = await Location.findById(req.params.id);
-  res.render('locations/edit', { location });
-});
+app.get(
+  '/locations/:id/edit',
+  catchAsync(async (req, res) => {
+    const location = await Location.findById(req.params.id);
+    res.render('locations/edit', { location });
+  })
+);
 
-app.put('/locations/:id', async (req, res) => {
-  const location = await Location.findByIdAndUpdate(req.params.id, {
-    ...req.body,
-  });
-  res.redirect(`/locations/${location._id}`);
-});
+app.put(
+  '/locations/:id',
+  catchAsync(async (req, res) => {
+    const location = await Location.findByIdAndUpdate(req.params.id, {
+      ...req.body,
+    });
+    res.redirect(`/locations/${location._id}`);
+  })
+);
 
-app.delete('/locations/:id', async (req, res) => {
-  const location = await Location.findByIdAndDelete(req.params.id);
-  res.redirect('/locations');
-});
+app.delete(
+  '/locations/:id',
+  catchAsync(async (req, res) => {
+    const location = await Location.findByIdAndDelete(req.params.id);
+    res.redirect('/locations');
+  })
+);
 
 app.listen(3000, () => {
   console.log('listening to port 3000');
+});
+
+app.all('*', (req, res, next) => {
+  next(new ExpressError('Page Not Found', 404));
+});
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = 'Oh No, Something Went Wrong!';
+  res.status(statusCode).render('error', { err });
 });
