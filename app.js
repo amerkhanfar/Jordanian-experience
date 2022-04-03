@@ -3,9 +3,12 @@ const res = require('express/lib/response');
 const app = express();
 const path = require('path');
 const Location = require('./models/locations');
+const Review = require('./models/reviews');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const catchAsync = require('./utilities/catchAsync');
+
+const { locationSchema } = require('./schemas');
 
 const mongoose = require('mongoose');
 const req = require('express/lib/request');
@@ -25,6 +28,17 @@ db.once('open', function () {
 app.engine('ejs', ejsMate);
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+const validateLocation = (req, res, next) => {
+  const { error } = locationSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((e) => {
+      e.message.join(',');
+      throw new ExpressError(msg, 400);
+    });
+  } else {
+    next();
+  }
+};
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -46,14 +60,15 @@ app.get('/locations/new', (req, res) => {
 
 app.post(
   '/locations',
+  validateLocation,
   catchAsync(async (req, res) => {
-    try {
-      const location = new Location(req.body);
-      await location.save();
-      res.redirect(`/locations/${location._id}`);
-    } catch (e) {
-      next(e);
+    if (!req.body) {
+      throw new ExpressError('invalid location data', 400);
     }
+
+    const location = new Location(req.body);
+    await location.save();
+    res.redirect(`/locations/${location._id}`);
   })
 );
 
@@ -75,6 +90,7 @@ app.get(
 
 app.put(
   '/locations/:id',
+  validateLocation,
   catchAsync(async (req, res) => {
     const location = await Location.findByIdAndUpdate(req.params.id, {
       ...req.body,
