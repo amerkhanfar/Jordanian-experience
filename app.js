@@ -3,12 +3,12 @@ const res = require('express/lib/response');
 const app = express();
 const path = require('path');
 const Location = require('./models/locations');
-const Review = require('./models/reviews');
+const Review = require('./models/review');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const catchAsync = require('./utilities/catchAsync');
 
-const { locationSchema } = require('./schemas');
+const { locationSchema, reviewSchema } = require('./schemas');
 
 const mongoose = require('mongoose');
 const req = require('express/lib/request');
@@ -28,6 +28,7 @@ db.once('open', function () {
 app.engine('ejs', ejsMate);
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+
 const validateLocation = (req, res, next) => {
   const { error } = locationSchema.validate(req.body);
   if (error) {
@@ -35,6 +36,16 @@ const validateLocation = (req, res, next) => {
       e.message.join(',');
       throw new ExpressError(msg, 400);
     });
+  } else {
+    next();
+  }
+};
+
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(',');
+    throw new ExpressError(msg, 400);
   } else {
     next();
   }
@@ -75,7 +86,7 @@ app.post(
 app.get(
   '/locations/:id',
   catchAsync(async (req, res) => {
-    const location = await Location.findById(req.params.id);
+    const location = await Location.findById(req.params.id).populate('reviews');
     res.render('locations/show', { location });
   })
 );
@@ -107,12 +118,32 @@ app.delete(
   })
 );
 
+app.post(
+  '/locations/:id/reviews',
+
+  catchAsync(async (req, res) => {
+    const location = await Location.findById(req.params.id);
+    const { rating, body } = req.body;
+    const review = new Review({ rating, body });
+    location.reviews.push(review);
+    await review.save();
+    await location.save();
+    res.redirect(`/locations/${location._id}`);
+  })
+);
+
+app.delete(
+  '/locations/:id/reviews/:reviewId',
+  catchAsync(async (req, res) => {
+    const { id, reviewId } = req.params;
+    await Location.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/locations/${id}`);
+  })
+);
+
 app.listen(3000, () => {
   console.log('listening to port 3000');
-});
-
-app.all('*', (req, res, next) => {
-  next(new ExpressError('Page Not Found', 404));
 });
 
 app.use((err, req, res, next) => {

@@ -1,14 +1,19 @@
 <% layout('layouts/boilerplate')%>
 <div class="row">
-  <div class="col-6 offset-3">
-    <div class="card mb-3">
-      <img src="<%= location.image%>" class="card-img-top" alt="..." />
+  <div class="col-6">
+    <div class="card" style="margin-top: 20px">
+      <img
+        src="<%=location.image%>"
+        class="card-img-top"
+        alt="..."
+        style="height: 500px"
+      />
       <div class="card-body">
-        <h5 class="card-title"><%= location.title%></h5>
+        <h5 class="card-title"><%= location.name%></h5>
         <p class="card-text"><%= location.description%></p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item text-muted"><%= location.city%></li>
+        <li class="list-group-item text-muted"><%= location.location%></li>
         <li class="list-group-item">$<%= location.price%>/night</li>
       </ul>
       <div class="card-body">
@@ -27,5 +32,53 @@
       </div>
       <div class="card-footer text-muted">2 days ago</div>
     </div>
+  </div>
+  <div class="col-6" style="margin-top: 20px">
+    <h4>Leave a Review</h4>
+    <form
+      action="/locations/<%= location._id %>/reviews"
+      method="POST"
+      novalidate
+      class="validated-form"
+    >
+      <div class="mb-3">
+        <label for="r" class="form-label">Rating</label>
+        <input
+          type="range"
+          name="rating"
+          id="r"
+          class="form-range"
+          min="1"
+          max="5"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="e" class="form-label">Review</label>
+        <textarea
+          name="body"
+          id="e"
+          cols="30"
+          rows="3"
+          class="form-control"
+          required
+        ></textarea>
+      </div>
+      <button class="btn btn-success">Submit</button>
+    </form>
+
+    <% for(let x of location.reviews){ %>
+    <div class="card mb-3 mt-2">
+      <div class="card-body">
+        <h5 class="card-title">Rating: <%= x.rating %></h5>
+        <p class="card-text">Review: <%= x.body %></p>
+        <form
+          action="/locations/<%= location._id%>/reviews/<%= x._id %>?_method=DELETE "
+          method="POST"
+        >
+          <button class="btn btn-sm btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+    <% } %>
   </div>
 </div>
