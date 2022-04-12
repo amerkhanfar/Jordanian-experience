@@ -1,0 +1,466 @@
+html {
+  font-size: 10px;
+}
+.first {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.6rem;
+  overflow: hidden;
+  width: 35rem;
+  margin-right: 2.5rem;
+}
+.second {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.6rem;
+}
+.third {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.6rem;
+  border-radius: 1.5rem;
+  border: 0.1rem solid rgb(232, 232, 232);
+  border-color: rgb(255, 255, 255);
+  padding: 1rem;
+}
+.fourth {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.fifth {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.6rem;
+  position: absolute;
+  top: 1rem;
+  left: 1.1rem;
+  width: max-content;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(0.4rem);
+  border-radius: 0.2rem;
+  padding: 0px 0.5rem;
+  z-index: 1;
+}
+
+.sixth {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.6rem;
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  height: 24.8rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 1.5rem;
+}
+.seventh {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.6rem;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  background: linear-gradient(
+      to right,
+      rgb(248, 248, 248) 0%,
+      rgb(255, 255, 255) 10%,
+      rgb(248, 248, 248) 40%,
+      rgb(248, 248, 248) 100%
+    )
+    no-repeat rgb(248, 248, 248);
+  opacity: 0;
+  will-change: opacity;
+  border-radius: inherit;
+  animation: 1.5s linear 0s infinite normal forwards running jCOzbu;
+}
+.image {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none;
+  opacity: 1;
+  will-change: transform, opacity;
+  border-radius: inherit;
+  filter: unset;
+}
+
+.eighth {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.6rem;
+  position: absolute;
+  bottom: 1.2rem;
+  max-width: calc(100% - 2.4rem);
+}
+.distance {
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  margin: 0px;
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(0.4rem);
+  border-radius: 0.4rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: rgb(54, 54, 54);
+  width: max-content;
+  padding: 0.2rem 0.5rem 0.3rem;
+}
+
+.ninth {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ten {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+.eleven {
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  line-height: 1.2;
+  margin-block-end: 0px;
+  font-weight: 500;
+  text-align: left;
+  font-size: 1.7rem;
+  margin: 0.8rem 0px 0.6rem;
+  max-width: 80%;
+  color: rgb(28, 28, 28);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.twelve {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  line-height: 1.7rem;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.6rem;
+  max-width: 20%;
+  display: flex;
+  align-content: center;
+  text-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.thirteen {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  line-height: 1.7rem;
+  text-align: center;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: inherit;
+  cursor: unset;
+}
+.fourteen {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  line-height: 1.7rem;
+  text-align: center;
+  cursor: unset;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background-color: rgb(38, 126, 62);
+  color: rgb(255, 255, 255);
+  height: 2rem;
+  min-width: 2.6rem;
+  padding: 0px 0.4rem;
+  font-size: 1.3rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgb(38, 126, 62);
+}
+.fifteen {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  line-height: 1.7rem;
+  text-align: center;
+  cursor: unset;
+  color: rgb(255, 255, 255);
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  display: block;
+  font-size: inherit;
+}
+.sixteen {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  line-height: 1.7rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: inherit;
+  cursor: unset;
+}
+.seventeen {
+  font-family: Okra, Helvetica, sans-serif;
+  line-height: 1.7rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  cursor: unset;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  margin-right: 0.2rem;
+  font-weight: 600;
+  font-size: inherit;
+  padding-bottom: 0.1rem;
+}
+.eighteen {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  line-height: 1.7rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  cursor: unset;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.6rem;
+  margin-left: 0px;
+}
+.nineteen {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  line-height: 1.7rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 1.6rem;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: inherit;
+}
+.twenty {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+.twentyo {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: inherit;
+  line-height: 1.5;
+  margin: 0px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(105, 105, 105);
+  max-width: 56%;
+  padding: 0px 0px 0.4rem;
+}
+.twentytw {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: inherit;
+  line-height: 1.5;
+  margin: 0px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(105, 105, 105);
+  max-width: 30%;
+  padding: 0px 0px 0.4rem;
+}
+.twentyth {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  margin: 0px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(156, 156, 156);
+  max-width: 100%;
+  padding: 0px 0px 0.4rem;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+}
+.twentyf {
+  font-family: Okra, Helvetica, sans-serif;
+  cursor: pointer;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  animation-play-state: paused !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: rgb(108, 66, 193);
+}
+.view {
+  background-color: rgb(78, 157, 213);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 3%;
+  margin-top: 70rem;
+}
+.view:hover {
+  color: rgb(78, 157, 213);
+  background-color: rgb(216, 215, 215);
+  transition: all 0.5s;
+}

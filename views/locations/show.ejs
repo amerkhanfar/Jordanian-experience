@@ -6,14 +6,14 @@
         src="<%=location.image%>"
         class="card-img-top"
         alt="..."
-        style="height: 500px"
+        height="350"
       />
       <div class="card-body">
-        <h5 class="card-title"><%= location.name%></h5>
+        <h5 class="card-title"><%= location.title%></h5>
         <p class="card-text"><%= location.description%></p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item text-muted"><%= location.location%></li>
+        <li class="list-group-item text-muted"><%= location.city%></li>
         <li class="list-group-item">$<%= location.price%>/night</li>
       </ul>
       <div class="card-body">
@@ -30,7 +30,6 @@
           <button class="btn btn-danger">Delete</button>
         </form>
       </div>
-      <div class="card-footer text-muted">2 days ago</div>
     </div>
   </div>
   <div class="col-6" style="margin-top: 20px">
