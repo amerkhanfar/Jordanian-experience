@@ -1,6 +1,6 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Jordanian Experience</a>
+    <a class="navbar-brand" href="#">JE</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,13 +13,18 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ml-auto">
-        <a class="nav-link" href="/locations"> Locations</a>
-        <a class="nav-link" href="/locations/new">New Location</a>
+      <div class="navbar-nav">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/campgrounds">Campgrounds</a>
+        <a class="nav-link" href="/campgrounds/new">New Campground</a>
       </div>
       <div class="navbar-nav ml-auto">
-        <a class="nav-link" href="/login">Login</a>
-        <a class="nav-link" href="/register">Register</a>
+        <% if(!currentUser) {%>
+        <a class="nav-link" href="/register">Login</a>
+
+        <% } else {%>
+        <a class="nav-link" href="/logout">Logout</a>
+        <% } %>
       </div>
     </div>
   </div>

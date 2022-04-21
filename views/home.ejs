@@ -2,49 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jordanian Experience</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="/stylesheets/home.css" />
+    <title>Jordanian Experience</title>
   </head>
-
-  <body class="d-flex text-center text-white bg-dark">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="mb-auto">
-        <div>
-          <h3 class="float-md-left mb-0">Jordanian Experience</h3>
-          <nav class="nav nav-masthead justify-content-center float-md-right">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="/locations">Locations</a>
-
-            <a class="nav-link" href="/login">Login</a>
-          </nav>
-        </div>
+  <body>
+    <section>
+      <div class="circle"></div>
+      <header>
+        <a href="#"><img src="/images/logo.png" alt="logo" class="logo" /></a>
+        <div class="toggle" onclick="toggleMenu();"></div>
+        <ul class="navigation">
+          <li><a href="/locations">Review</a></li>
+          <li><a href="/register">Log in</a></li>
+          <li><a href="/register">Sign up</a></li>
+        </ul>
       </header>
-      <main class="px-3">
-        <h1>Jordanian Experience</h1>
-        <p class="lead">
-          Welcome to JE! <br />
-          Jump right in and explore our many Locations. <br />
-          Feel free to share some of your own and comment on others!
-        </p>
-        <a
-          href="/locations"
-          class="btn btn-lg btn-secondary font-weight-bold border-white bg-white"
-          >View Locations</a
-        >
-      </main>
-
-      <footer class="mt-auto text-white-50">
-        <p>&copy; 2022</p>
-      </footer>
-    </div>
-
+      <div class="content">
+        <div class="textBox">
+          <h2>
+            Welcome To <br />
+            <span>Jordanian Experience</span>
+          </h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In libero
+            accusantium assumenda inventore maxime ex laudantium rem ab
+            repellendus beatae sapiente culpa sunt, aspernatur asperiores.
+          </p>
+          <a href="/locations">View Locations</a>
+        </div>
+        <div class="imgBox">
+          <img src="/images/native2.png" alt="" class="phone" height="450" />
+          <img src="/images/logo.png" alt="Je" class="logo1" />
+          <a href="#" class="share"
+            >Share Your<br />
+            Experience</a
+          >
+        </div>
+      </div>
+    </section>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -55,5 +52,13 @@
       integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function toggleMenu() {
+        var menuToggle = document.querySelector('.toggle');
+        var navigation = document.querySelector('.navigation');
+        menuToggle.classList.toggle('active');
+        navigation.classList.toggle('active');
+      }
+    </script>
   </body>
 </html>
