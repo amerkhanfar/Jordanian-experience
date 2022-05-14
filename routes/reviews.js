@@ -4,6 +4,7 @@ const catchAsync = require('../utilities/catchAsync');
 const ExpressError = require('../utilities/expressError');
 const Review = require('../models/review');
 const Location = require('../models/locations');
+const reviews = require('../controllers/reviews');
 const { reviewSchema } = require('../schemas');
 
 const validateReview = (req, res, next) => {
@@ -18,27 +19,9 @@ const validateReview = (req, res, next) => {
 router.post(
   '/',
 
-  catchAsync(async (req, res) => {
-    const location = await Location.findById(req.params.id);
-    const { rating, body } = req.body;
-    const review = new Review({ rating, body });
-    location.reviews.push(review);
-    await review.save();
-    await location.save();
-    req.flash('success', 'Created New Review');
-    res.redirect(`/locations/${location._id}`);
-  })
+  catchAsync(reviews.createReview)
 );
 
-router.delete(
-  '/:reviewId',
-  catchAsync(async (req, res) => {
-    const { id, reviewId } = req.params;
-    await Location.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
-    await Review.findByIdAndDelete(reviewId);
-    req.flash('error', 'Deleted Review');
-    res.redirect(`/locations/${id}`);
-  })
-);
+router.delete('/:reviewId', catchAsync(reviews.deleteReview));
 
 module.exports = router;

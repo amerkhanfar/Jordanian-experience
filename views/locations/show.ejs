@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/stylesheets/stars.css" />
 <div class="row">
   <div class="col-6">
     <div class="card" style="margin-top: 20px">
@@ -14,8 +15,12 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item text-muted"><%= location.city%></li>
+        <li class="list-group-item text-muted">
+          <%= location.author.username%>
+        </li>
         <li class="list-group-item">$<%= location.price%>/night</li>
       </ul>
+      <% if (currentUser && location.author.equals(currentUser._id)) { %>
       <div class="card-body">
         <a
           class="card-link btn btn-info"
@@ -30,9 +35,12 @@
           <button class="btn btn-danger">Delete</button>
         </form>
       </div>
+      <% } %>
     </div>
   </div>
   <div class="col-6" style="margin-top: 20px">
+    <div id="map" style="width: 400px; height: 300px"></div>
+    <% if(currentUser) { %>
     <h4>Leave a Review</h4>
     <form
       action="/locations/<%= location._id %>/reviews"
@@ -41,15 +49,27 @@
       class="validated-form"
     >
       <div class="mb-3">
-        <label for="r" class="form-label">Rating</label>
-        <input
-          type="range"
-          name="rating"
-          id="r"
-          class="form-range"
-          min="1"
-          max="5"
-        />
+        <fieldset class="starability-basic">
+          <input
+            type="radio"
+            id="no-rate"
+            class="input-no-rate"
+            name="rating"
+            value="1"
+            checked
+            aria-label="No rating."
+          />
+          <input type="radio" id="first-rate1" name="rating" value="1" />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="rating" value="2" />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="rating" value="3" />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="rating" value="4" />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="rating" value="5" />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
       </div>
       <div class="mb-3">
         <label for="e" class="form-label">Review</label>
@@ -64,20 +84,48 @@
       </div>
       <button class="btn btn-success">Submit</button>
     </form>
-
-    <% for(let x of location.reviews){ %>
+    <% } %> <% for(let x of location.reviews){ %>
     <div class="card mb-3 mt-2">
       <div class="card-body">
-        <h5 class="card-title">Rating: <%= x.rating %></h5>
+        <h6 class="card-subtitle mb-2"><%= x.author.username%></h6>
+        <p class="starability-result" data-rating="<%= x.rating %>">
+          Rated: <%= x.rating %> stars
+        </p>
+
         <p class="card-text">Review: <%= x.body %></p>
+        <% if (currentUser && x.author.equals(currentUser._id)) { %>
         <form
           action="/locations/<%= location._id%>/reviews/<%= x._id %>?_method=DELETE "
           method="POST"
         >
           <button class="btn btn-sm btn-danger">Delete</button>
         </form>
+        <% } %>
       </div>
     </div>
     <% } %>
   </div>
 </div>
+<script>
+  const campground = <%- JSON.stringify(location) %>
+</script>
+
+<script>
+  mapboxgl.accessToken =
+    'pk.eyJ1IjoiYW1lcmswMCIsImEiOiJjbDJqMHdnOW8wdDIwM2Zxd2VoajZqazJuIn0.L01AoI4L1nmt-iTTWVmVuA';
+  const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    center: campground.geometry.coordinates, // starting position [lng, lat]
+    zoom: 11, // starting zoom
+  });
+
+  const marker2 = new mapboxgl.Marker({ color: 'red', rotation: 45 })
+    .setLngLat(campground.geometry.coordinates)
+    .setPopup(
+      new mapboxgl.Popup({ offset: 25 }).setHTML(
+        `<h3>${campground.title}</h3><p>${campground.city}</p>`
+      )
+    )
+    .addTo(map);
+</script>

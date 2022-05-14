@@ -3,14 +3,14 @@ module.exports = [
     title: 'Amman Al-Kubra',
     city: 'Amman',
     price: '$$$',
-    category: 'resturant',
+    category: 'Resturant',
     image: 'https://www.ammanalkubra.com/static/media/logo1.14d12760.png',
   },
   {
-    title: 'Ocean Fresh Fish Restaurant',
+    title: 'Ocean Fresh Fish',
     city: 'Amman',
     price: '$$$',
-    category: 'resturant',
+    category: 'Resturant',
     image:
       'https://play-lh.googleusercontent.com/RmsiMeEU3DGq2jyRuYZfVjfUXlTU4LIP2nyXdkMG-uFm12bA7aT5Qnr4xRzSLgqOPJU',
   },
@@ -18,7 +18,7 @@ module.exports = [
     title: 'MLT',
     city: 'Amman',
     price: '$$$',
-    category: 'resturant',
+    category: 'Resturant',
     image:
       'data:image/png;base64,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',
   },
@@ -26,7 +26,7 @@ module.exports = [
     title: 'Tawaheen AlHawa',
     city: 'Amman',
     price: '$$$',
-    category: 'resturant',
+    category: 'Resturant',
     image:
       'https://edexy.com/custom/domain_1/image_files/sitemgr_photo_172675.png',
   },

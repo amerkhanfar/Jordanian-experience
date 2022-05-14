@@ -5,6 +5,7 @@ const ExpressError = require('../utilities/expressError');
 const isloggedIn = require('../middleware');
 const Location = require('../models/locations');
 const { locationSchema } = require('../schemas');
+const locations = require('../controllers/locations');
 
 const validateLocation = (req, res, next) => {
   const { error } = locationSchema.validate(req.body);
@@ -18,16 +19,17 @@ const validateLocation = (req, res, next) => {
   }
 };
 
-router.get(
-  '/',
-  catchAsync(async (req, res) => {
-    const locations = await Location.find({});
-    res.render('locations/index', { locations });
-  })
-);
-router.get('/new', isloggedIn, (req, res) => {
-  res.render('locations/new');
-});
+const isAuthor = async (req, res, next) => {
+  const location = await Location.findById(req.params.id);
+  if (!location.author.equals(req.user._id)) {
+    req.flash('error', 'You Are Not Authorized To Edit This Location');
+    return res.redirect(`/locations/${location._id}`);
+  }
+  next();
+};
+
+router.get('/', catchAsync(locations.index));
+router.get('/new', isloggedIn, locations.renderNewForm);
 
 router.get(
   '/login',
@@ -37,67 +39,30 @@ router.get(
   })
 );
 
-router.post(
-  '/',
-  validateLocation,
-  catchAsync(async (req, res) => {
-    if (!req.body) {
-      throw new ExpressError('invalid location data', 400);
-    }
+router.post('/', validateLocation, catchAsync(locations.createLocation));
 
-    const location = new Location(req.body);
-    await location.save();
-    req.flash('success', 'successfully made a new location');
-    res.redirect(`/locations/${location._id}`);
-  })
-);
-
-router.get(
-  '/:id',
-  catchAsync(async (req, res) => {
-    const location = await Location.findById(req.params.id).populate('reviews');
-    if (!location) {
-      req.flash('error', 'Cannot Find That Location');
-      return res.redirect('/locations');
-    }
-    res.render('locations/show', { location });
-  })
-);
+router.get('/:id', catchAsync(locations.showLocation));
 
 router.get(
   '/:id/edit',
   isloggedIn,
-  catchAsync(async (req, res) => {
-    const location = await Location.findById(req.params.id);
-    if (!location) {
-      req.flash('error', 'Cannot Find That Location');
-      return res.redirect('/locations');
-    }
-    res.render('locations/edit', { location });
-  })
+  isAuthor,
+  catchAsync(locations.renderEditForm)
 );
 
 router.put(
   '/:id',
   isloggedIn,
+  isAuthor,
   validateLocation,
-  catchAsync(async (req, res) => {
-    const location = await Location.findByIdAndUpdate(req.params.id, {
-      ...req.body,
-    });
-    req.flash('success', 'successfully updated the location');
-    res.redirect(`/locations/${location._id}`);
-  })
+  catchAsync(locations.editLocation)
 );
 
 router.delete(
   '/:id',
+  isAuthor,
   isloggedIn,
-  catchAsync(async (req, res) => {
-    const location = await Location.findByIdAndDelete(req.params.id);
-    req.flash('error', 'Deleted Location');
-    res.redirect('/locations');
-  })
+  catchAsync(locations.deleteLocation)
 );
 
 module.exports = router;
