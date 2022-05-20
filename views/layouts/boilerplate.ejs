@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheets/flash.css" />
     <title>Jordanian Experience</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -25,7 +26,7 @@
   <body class="d-flex flex-column vh-100">
     <%- include('../partials/navbar') %>
     <main class="container">
-      <%- include('../partials/flash') %><%- body %>
+      <%- include('../partials/flash') %> <%- body %>
     </main>
 
     <%- include('../partials/footer.ejs') %>
@@ -42,5 +43,20 @@
     ></script>
     <script src="/scripts/validateForm.js"></script>
     <script src="/scripts/navbar.js"></script>
+    <script>
+      $('button').click(function () {
+        $('.alert').addClass('show');
+        $('.alert').removeClass('hide');
+        $('.alert').addClass('showAlert');
+        setTimeout(function () {
+          $('.alert').removeClass('show');
+          $('.alert').addClass('hide');
+        }, 5000);
+      });
+      $('.close-btn').click(function () {
+        $('.alert').removeClass('show');
+        $('.alert').addClass('hide');
+      });
+    </script>
   </body>
 </html>

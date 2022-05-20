@@ -11,47 +11,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-html {
-  scroll-behavior: smooth;
-}
-header {
-  height: 70px;
-  position: fixed;
-  border-radius: 0px 0px 20px 20px;
-  position: absolute;
-  color: white;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--carribean-green);
-}
-
-header .logo {
-  position: relative;
-  max-width: 80px;
-}
-
-header ul {
-  position: relative;
-  display: flex;
-  color: white;
-}
-
-header ul li {
-  list-style-type: none;
-}
-header ul li a {
-  display: inline-block;
-  color: white;
-  font-weight: 400;
-  margin-left: 40px;
-  text-decoration: none;
-}
-
 body {
   font-family: 'Quicksand', sans-serif;
 }
@@ -63,7 +22,7 @@ img {
 }
 .container {
   width: 88vw;
-  margin: 100px auto;
+  margin: 0 auto;
 }
 .lg-title,
 .md-title,
@@ -152,15 +111,14 @@ img {
   color: white;
 }
 .btn-cart:hover {
-  background: white;
-  color: var(--carribean-green);
+  background: var(--carribean-green);
 }
 .btn-buy {
   background: white;
 }
 .btn-buy:hover {
-  background: white;
-  color: var(--carribean-green);
+  background: var(--carribean-green);
+  color: #fff;
 }
 .product-info {
   background: white;
@@ -230,11 +188,11 @@ img {
 }
 .product-col-left {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
-    url('/images/Resturant.jpg') center/cover no-repeat;
+    url('images/fashion-img-1.jpg') center/cover no-repeat;
 }
 .product-col-r-top {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
-    url('/images/Hotel.jpg') center/cover no-repeat;
+    url('images/fashion-img-2.png') center/cover no-repeat;
 }
 .flex {
   display: flex;
@@ -245,8 +203,7 @@ img {
   margin: 5px;
 }
 .product-col-r-bottom > div:first-child {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
-    url('/images/things.jpg') center/cover no-repeat;
+  background: #eaa001;
 }
 .product-col-r-bottom > div:last-child {
   background: #0090ff;
@@ -264,7 +221,6 @@ img {
 .btn-dark {
   background: black;
   color: white;
-  text-decoration: none;
   outline: 0;
   border-radius: 25px;
   padding: 0.7rem 1rem;
@@ -316,57 +272,5 @@ img {
   }
   .product-col-left {
     height: 121.5vh;
-  }
-}
-
-@media (max-width: 991px) {
-  body {
-    max-height: 100vh;
-    text-align: center;
-  }
-  header {
-    padding: 20px;
-  }
-  header .logo {
-    max-width: 90px;
-  }
-  header ul {
-    display: none;
-  }
-
-  header ul.navigation.active {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: #fff;
-    z-index: 10;
-  }
-
-  .toggle {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    background: url('/images/menu.png');
-    background-size: 30px;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: invert(1);
-    z-index: 11;
-  }
-
-  .toggle.active {
-    position: fixed;
-    right: 20px;
-    background: url('/images/close.png');
-    background-size: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
   }
 }

@@ -1,31 +1,14 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">JE</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/locations">Campgrounds</a>
-        <a class="nav-link" href="/locations/new">New Campground</a>
-      </div>
-      <div class="navbar-nav ml-auto">
-        <% if(!currentUser) {%>
-        <a class="nav-link" href="/register">Login</a>
+<header>
+  <a href="/"><img src="/images/logo1.png" alt="logo" class="logo" /></a>
+  <div class="toggle" onclick="toggleMenu();"></div>
+  <ul class="navigation">
+    <li><a href="/locations">All Locations</a></li>
+    <li><a href="/locations/new">Create a location</a></li>
+    <% if(!currentUser) { %>
+    <li><a href="/register">Login</a></li>
+    <% } else {%>
 
-        <% } else {%>
-        <a class="nav-link" href="/logout">Logout</a>
-        <% } %>
-      </div>
-    </div>
-  </div>
-</nav>
+    <li><a href="/register">Logout</a></li>
+    <% } %>
+  </ul>
+</header>

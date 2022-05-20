@@ -17,7 +17,7 @@ db.once('open', function () {
 const seedDb = async () => {
   await Review.deleteMany({});
   await Location.deleteMany({});
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 6; i++) {
     const location = new Location({
       author: '62612e903978f3216b9be87f',
       title: `${cities[i].title}`,

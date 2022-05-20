@@ -5,6 +5,15 @@ const geocoder = mbxGeocoding({
   accessToken:
     'pk.eyJ1IjoiYW1lcmswMCIsImEiOiJjbDJqMHdnOW8wdDIwM2Zxd2VoajZqazJuIn0.L01AoI4L1nmt-iTTWVmVuA',
 });
+module.exports.category = async (req, res) => {
+  const locations = await Location.find({
+    $where: function () {
+      return this.category == 'Hotel';
+    },
+  });
+  res.render('locations/category', { locations });
+};
+
 module.exports.index = async (req, res) => {
   const locations = await Location.find({});
   res.render('locations/index', { locations });

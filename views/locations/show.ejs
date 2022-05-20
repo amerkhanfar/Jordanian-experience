@@ -1,45 +1,66 @@
 <% layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/stars.css" />
-<div class="row">
-  <div class="col-6">
-    <div class="card" style="margin-top: 20px">
-      <img
-        src="<%=location.image%>"
-        class="card-img-top"
-        alt="..."
-        height="350"
-      />
-      <div class="card-body">
-        <h5 class="card-title"><%= location.title%></h5>
-        <p class="card-text"><%= location.description%></p>
+<link rel="stylesheet" href="/stylesheets/show.css" />
+<link rel="stylesheet" href="/stylesheets/navbar.css" />
+<div class = "card-wrapper">
+  <div class = "card">
+    <!-- card left -->
+    <div class = "product-imgs">
+      <div class = "img-display">
+        <div class = "img-showcase">
+          <img src = "<%= location.image %>" alt = "shoe image">
+
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item text-muted"><%= location.city%></li>
-        <li class="list-group-item text-muted">
-          <%= location.author.username%>
-        </li>
-        <li class="list-group-item">$<%= location.price%>/night</li>
-      </ul>
+
+    </div>
+    <!-- card right -->
+    <div class = "product-content">
+      <h2 class = "product-title"><%=location.title %></h2>
+      
+      <div class = "product-rating">
+        <i class = "fas fa-star"></i>
+        <i class = "fas fa-star"></i>
+        <i class = "fas fa-star"></i>
+        <i class = "fas fa-star"></i>
+        <i class = "fas fa-star-half-alt"></i>
+        
+      </div>
+
+      <div class = "product-price">
+        <p class = "last-price">Average Price: <span> <%=location.price%> </span> per person </p>
+
+      </div>
+
+      <div class = "product-detail">
+        <h2>Description </h2>
+        <p><%= location.description %></p>
+        
+        <div id="map" style="width: 400px; height: 300px"></div>
+      </div>
+
       <% if (currentUser && location.author.equals(currentUser._id)) { %>
-      <div class="card-body">
-        <a
-          class="card-link btn btn-info"
-          href="/locations/<%=location._id%>/edit"
-          >Edit</a
-        >
-        <form
-          class="d-inline"
-          action="/locations/<%=location._id%>?_method=DELETE"
-          method="POST"
-        >
-          <button class="btn btn-danger">Delete</button>
-        </form>
-      </div>
-      <% } %>
+        <div class="card-body">
+          <a
+            class="card-link btn btn-info"
+            href="/locations/<%=location._id%>/edit"
+            >Edit</a
+          >
+          <form
+            class="d-inline"
+            action="/locations/<%=location._id%>?_method=DELETE"
+            method="POST"
+          >
+            <button class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+        <% } %>
+
     </div>
   </div>
-  <div class="col-6" style="margin-top: 20px">
-    <div id="map" style="width: 400px; height: 300px"></div>
+</div>
+  <div class="col-6" style="margin-top: 50px; margin-left: 100px;">
+    
     <% if(currentUser) { %>
     <h4>Leave a Review</h4>
     <form
@@ -76,7 +97,7 @@
         <textarea
           name="body"
           id="e"
-          cols="30"
+          cols="50"
           rows="3"
           class="form-control"
           required
@@ -92,7 +113,7 @@
           Rated: <%= x.rating %> stars
         </p>
 
-        <p class="card-text">Review: <%= x.body %></p>
+        <p class="card-text">Review: <b><%= x.body %></b></p>
         <% if (currentUser && x.author.equals(currentUser._id)) { %>
         <form
           action="/locations/<%= location._id%>/reviews/<%= x._id %>?_method=DELETE "
@@ -117,7 +138,7 @@
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: campground.geometry.coordinates, // starting position [lng, lat]
-    zoom: 11, // starting zoom
+    zoom: 13, // starting zoom
   });
 
   const marker2 = new mapboxgl.Marker({ color: 'red', rotation: 45 })

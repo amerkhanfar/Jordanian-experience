@@ -30,6 +30,23 @@ module.exports = [
     image:
       'https://edexy.com/custom/domain_1/image_files/sitemgr_photo_172675.png',
   },
+  {
+    title: 'Hilton Resort & Spa',
+    city: 'Dead Sea',
+    price: '121',
+    category: 'Hotel',
+    image:
+      'https://www.hilton.com/im/en/AMMDSHI/3160745/2017-06-hilton-dead-sea24277.jpg?impolicy=crop&cw=4928&ch=2630&gravity=NorthWest&xposition=0&yposition=324&rw=800&rh=427',
+  },
+  {
+    title: 'Holiday Inn Resort',
+    city: 'Dead Sea',
+    price: '121',
+    category: 'Hotel',
+    image:
+      'https://www.hilton.com/im/en/AMMDSHI/3160745/2017-06-hilton-dead-sea24277.jpg?impolicy=crop&cw=4928&ch=2630&gravity=NorthWest&xposition=0&yposition=324&rw=800&rh=427',
+  },
+
   /*{
     title: '',
     city: 'Amman',

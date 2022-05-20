@@ -29,6 +29,7 @@ const isAuthor = async (req, res, next) => {
 };
 
 router.get('/', catchAsync(locations.index));
+router.get('/category', catchAsync(locations.category));
 router.get('/new', isloggedIn, locations.renderNewForm);
 
 router.get(

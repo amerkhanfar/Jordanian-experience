@@ -1,0 +1,89 @@
+header {
+  height: 70px;
+  position: fixed;
+  border-radius: 0px 0px 10px 10px;
+  position: absolute;
+  color: white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--carribean-green);
+}
+
+header .logo {
+  position: relative;
+  max-width: 80px;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  color: white;
+}
+
+header ul li {
+  list-style-type: none;
+}
+header ul li a {
+  display: inline-block;
+  color: white;
+  font-weight: 400;
+  margin-left: 40px;
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  body {
+    max-height: 100vh;
+    text-align: center;
+  }
+  header {
+    padding: 20px;
+  }
+  header .logo {
+    max-width: 90px;
+  }
+  header ul {
+    display: none;
+  }
+
+  header ul.navigation.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    z-index: 10;
+  }
+
+  .toggle {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: url('/images/menu.png');
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: invert(1);
+    z-index: 11;
+  }
+
+  .toggle.active {
+    position: fixed;
+    right: 20px;
+    background: url('/images/close.png');
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
